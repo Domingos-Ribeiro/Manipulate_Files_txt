@@ -57,7 +57,7 @@ int main()
 				break;
 			}
 
-			case 'N': case 'n':
+			case 'E': case 'e':
 			{
 
 	
@@ -76,13 +76,13 @@ int main()
 			break;
 			}
 
-			case 'Z': case 'z':
+			case 'I': case 'i': // Inicializa o ficheiro com vários nomes
 			{
 				inicializa_ficheiro();
 			}
 				break;
 
-			case 'D': case 'd':// Apaga ficheiro
+			case 'D': case 'd':// Apaga o ficheiro
 				
 				if (remove("lista.txt") != 0)
 					cout << "Não existe esse ficheiro";
@@ -106,7 +106,7 @@ int main()
 
 				break;
 
-			case 'P': case 'p':
+			case 'P': case 'p': // Procura um nome "Completo" na lista
 				
 				cout << "Qual o nome que deseja procurar? ";
 				getline(cin, nome);
@@ -123,9 +123,17 @@ int main()
 					
 				break;
 
-			case 'J':
-				break;
+			case 'C': case 'c': // Coloca mais um nome na lista
+			{
+				cout << "Introduza o nome que deseja acrescentar na lista: ";
+				getline(cin, nome);
 
+				ofstream filePointerC("Lista.txt", ofstream::app);
+				filePointerC << "\n" << nome;
+				filePointerC.close();
+
+				break;
+			}
 			case 'K':
 				break;
 
@@ -145,14 +153,23 @@ int main()
 //  - - - - - - - - - FUNÇÕES - - - - - - - - -
 void DesenhaMenu()
 	{
-		cout << "\n - (L)istar ficheiro \n";
-		cout << "\n - escrever (N)o inicio do ficheiro\n";
-		cout << "\n - iniciali(Z)ar ficheiro com 16 nomes\n";
-		cout << "\n - (D)eletar ficheiro\n";
-		cout << "\n - (S)ubstituir nome do ficheiro\n";
-		cout << "\n - (P)rocurar nome do ficheiro\n";
-		cout << "\n - a(J)uda\n";
-		cout << "\n - (K) outra opção\n";
+		cout << "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\n";
+		cout << "xx                                              xx\n";
+		cout << "xx                MENU PRINCIPAL                xx\n";
+		cout << "xx                                              xx\n";
+		cout << "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\n";
+		cout << "xx                                              xx\n";
+		cout << "xx  - (I)nicializar o ficheiro com 16 nomes.    xx\n";
+		cout << "xx  - (L)istar os nomes da lista.               xx\n";
+		cout << "xx  - (C)olocar mais um nome na lista.          xx\n";
+		cout << "xx  - (E)screver um nome no inicio da lista.    xx\n";
+		cout << "xx  - (D)eletar ou apagar o ficheiro de texto.  xx\n";
+		cout << "xx  - (S)ubstituir um nome na lista.            xx\n";
+		cout << "xx  - (P)rocurar um nome na lista.              xx\n";
+		cout << "xx  - (A)juda.                                  xx\n";
+		cout << "xx  - (O)utra opção.                            xx\n";
+		cout << "xx                                              xx\n";
+		cout << "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\n";
 	}
 
 
@@ -176,7 +193,7 @@ void inicializa_ficheiro()
 	fpd << "Anabela Bastos Torres" << "\n";
 	fpd << "Teodoro Armando Matos" << "\n";
 	fpd.close();
-	cout << "Inicializado!";
+	//cout << "Inicializado!";
 	}
 
 
