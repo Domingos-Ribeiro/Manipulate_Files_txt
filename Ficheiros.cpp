@@ -5,7 +5,10 @@
 #include <string>
 #include <locale>
 #include <Windows.h>
+
+
 using namespace std;
+
 
 //  - - - - - - - - - DECLARAÇÃO DAS VARIÁVEIS - - - - - - - - -
 char op;
@@ -109,7 +112,7 @@ int main()
 			case 'P': case 'p': // Procura um nome "Completo" na lista
 				
 				cout << "Qual o nome que deseja procurar? ";
-				getline(cin, nome);
+				getline(cin.ignore(), nome);
 
 				if (ExisteNome(nome) == true)
 					{
@@ -153,6 +156,7 @@ int main()
 //  - - - - - - - - - FUNÇÕES - - - - - - - - -
 void DesenhaMenu()
 	{
+		SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 6);
 		cout << "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\n";
 		cout << "xx                                              xx\n";
 		cout << "xx                MENU PRINCIPAL                xx\n";
@@ -170,28 +174,29 @@ void DesenhaMenu()
 		cout << "xx  - (O)utra opção.                            xx\n";
 		cout << "xx                                              xx\n";
 		cout << "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\n";
+		SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE),7);
 	}
 
 
 void inicializa_ficheiro()
 	{
 	ofstream fpd("lista.txt");
-	fpd << "Ana Rita Cunha" << "\n";
-	fpd << "Bela Costa Silva" << "\n";
-	fpd << "Carlos Alberto Costa" << "\n";
-	fpd << "Carlos Serafim Ferreira" << "\n";
-	fpd << "Daniel Bastos Gomes" << "\n";
-	fpd << "Diogo Silva Ferraz" << "\n";
-	fpd << "Elvira Gomes Pendes" << "\n";
-	fpd << "Fernanda Maria Silva" << "\n";
-	fpd << "Fernando Gomes Barros" << "\n";
-	fpd << "Gilherme Alexandre Barros" << "\n";
-	fpd << "Hilda Fonseca Silva" << "\n";
-	fpd << "José Manuel Carvalho" << "\n";
-	fpd << "José Alberto Gomes" << "\n";
-	fpd << "Maria Silvéria Bastos" << "\n";
-	fpd << "Anabela Bastos Torres" << "\n";
-	fpd << "Teodoro Armando Matos" << "\n";
+	fpd << "               Ana Rita Cunha" << "\n";
+	fpd << "               Bela Costa Silva" << "\n";
+	fpd << "               Carlos Alberto Costa" << "\n";
+	fpd << "               Carlos Serafim Ferreira" << "\n";
+	fpd << "               Daniel Bastos Gomes" << "\n";
+	fpd << "               Diogo Silva Ferraz" << "\n";
+	fpd << "               Elvira Gomes Pendes" << "\n";
+	fpd << "               Fernanda Maria Silva" << "\n";
+	fpd << "               Fernando Gomes Barros" << "\n";
+	fpd << "               Gilherme Alexandre Barros" << "\n";
+	fpd << "               Hilda Fonseca Silva" << "\n";
+	fpd << "               José Manuel Carvalho" << "\n";
+	fpd << "               José Alberto Gomes" << "\n";
+	fpd << "               Maria Silvéria Bastos" << "\n";
+	fpd << "               Anabela Bastos Torres" << "\n";
+	fpd << "               Teodoro Armando Matos" << "\n";
 	fpd.close();
 	//cout << "Inicializado!";
 	}
