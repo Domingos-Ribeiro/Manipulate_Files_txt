@@ -85,6 +85,8 @@ int main()
 			}
 				break;
 
+
+
 			case 'D': case 'd':// Apaga o ficheiro
 				
 				if (remove("lista.txt") != 0)
@@ -93,6 +95,8 @@ int main()
 				else cout << "Removido";
 
 				break;
+
+
 
 			case 'S': case 's':
 				cout << "Qual o nome que deseja Substituir? ";
@@ -114,6 +118,8 @@ int main()
 
 				break;
 
+
+
 			case 'P': case 'p': // Procura um nome "Completo" na lista
 				
 				cout << "Qual o nome que deseja procurar? ";
@@ -132,7 +138,9 @@ int main()
 					
 				break;
 
-			case 'C': case 'c': // Coloca mais um nome na lista
+
+
+			case 'M': case 'm': // Coloca mais um nome na lista
 			{
 				cout << "Introduza o nome que deseja acrescentar na lista: ";
 				getline(cin, nome);
@@ -143,7 +151,22 @@ int main()
 
 				break;
 			}
-			case 'K':
+			case 'C': case 'c':
+			{
+
+			int contador = 0;
+			ifstream filePointerC("lista.txt");
+
+			while (getline(filePointerC, nome))
+				{
+				contador++;
+				}
+
+			cout << "\nA lista contem: " << contador << " nomes \n\n";
+			filePointerC.close();
+			
+			}
+			
 				break;
 
 
@@ -153,7 +176,7 @@ int main()
 				break;
 			}
 
-		} while (op != 27); //O número 27 corresponde ao ESC em ASCI, ou seja, fecha o progrma
+		} while (op != 27); //O número 27 corresponde ao ESC em ASCI, ou seja, fecha o programa
 }
 
 
@@ -172,12 +195,12 @@ void DesenhaMenu()
 		cout << "xx  - (I)nicializar o ficheiro com 16 nomes.    xx\n";
 		cout << "xx  - (L)istar os nomes da lista.               xx\n";
 		cout << "xx  - (E)screver um nome no inicio da lista.    xx\n";
-		cout << "xx  - (C)olocar mais um nome no Fim da lista.   xx\n";
+		cout << "xx  - (M)ais um nome no Fim da lista.           xx\n";
 		cout << "xx  - (D)eletar ou apagar o ficheiro de texto.  xx\n";
 		cout << "xx  - (S)ubstituir um nome na lista.            xx\n";
 		cout << "xx  - (P)rocurar um nome na lista.              xx\n";
 		cout << "xx  - (A)juda.                                  xx\n";
-		cout << "xx  - (O)utra opção.                            xx\n";
+		cout << "xx  - (C)ontar nomes.                           xx\n";
 		cout << "xx                                              xx\n";
 		cout << "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\n";
 		SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE),7);
