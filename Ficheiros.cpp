@@ -188,15 +188,8 @@ int main()
 			cout << "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\n";
 			SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 7);
 			
-			if (ContarNomesRepetidos > 0)
-				{
-					cout << "Existem " << ContarNomesRepetidos() << " nomes iguais a esse.\n";
-				}
-			else
-				{
-				cout << "O nome que digitou não existe na lista";
-				}
-			
+			cout << "Existem " << ContarNomesRepetidos() << " nomes iguais a esse.\n";
+
 			break;
 			}
 			
