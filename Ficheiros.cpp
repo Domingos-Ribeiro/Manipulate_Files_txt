@@ -100,11 +100,16 @@ int main()
 
 				if (ExisteNome(nome) == true)
 					{
-					ofstream fpd("lista.txt", ofstream::out);
+					cout << "Nome a colocar na lista? \n";
+					getline(cin, nome);
+					system("clear || cls");
+					ofstream fps("lista.txt", ios::app);
+					fps << nome << "\n";
+					fps.close();
 					}
 				else
 					{
-					cout << "O nome Não existe!";
+					cout << "O nome Não existe!\n";
 					}
 
 				break;
@@ -112,15 +117,16 @@ int main()
 			case 'P': case 'p': // Procura um nome "Completo" na lista
 				
 				cout << "Qual o nome que deseja procurar? ";
+				cin.ignore();
 				getline(cin.ignore(), nome);
 
 				if (ExisteNome(nome) == true)
 					{
-						cout << "O nome existe!";
+						cout << "O nome existe!\n";
 					}
 				else
 					{
-						cout << "O nome Não existe!";
+						cout << "O nome Nao existe!\n";
 					}
 					
 					
@@ -181,22 +187,22 @@ void DesenhaMenu()
 void inicializa_ficheiro()
 	{
 	ofstream fpd("lista.txt");
-	fpd << "               Ana Rita Cunha" << "\n";
-	fpd << "               Bela Costa Silva" << "\n";
-	fpd << "               Carlos Alberto Costa" << "\n";
-	fpd << "               Carlos Serafim Ferreira" << "\n";
-	fpd << "               Daniel Bastos Gomes" << "\n";
-	fpd << "               Diogo Silva Ferraz" << "\n";
-	fpd << "               Elvira Gomes Pendes" << "\n";
-	fpd << "               Fernanda Maria Silva" << "\n";
-	fpd << "               Fernando Gomes Barros" << "\n";
-	fpd << "               Gilherme Alexandre Barros" << "\n";
-	fpd << "               Hilda Fonseca Silva" << "\n";
-	fpd << "               José Manuel Carvalho" << "\n";
-	fpd << "               José Alberto Gomes" << "\n";
-	fpd << "               Maria Silvéria Bastos" << "\n";
-	fpd << "               Anabela Bastos Torres" << "\n";
-	fpd << "               Teodoro Armando Matos" << "\n";
+	fpd << "Ana Rita Cunha" << "\n";
+	fpd << "Bela Costa Silva" << "\n";
+	fpd << "Carlos Alberto Costa" << "\n";
+	fpd << "Carlos Serafim Ferreira" << "\n";
+	fpd << "Daniel Bastos Gomes" << "\n";
+	fpd << "Diogo Silva Ferraz" << "\n";
+	fpd << "Elvira Gomes Pendes" << "\n";
+	fpd << "Fernanda Maria Silva" << "\n";
+	fpd << "Fernando Gomes Barros" << "\n";
+	fpd << "Gilherme Alexandre Barros" << "\n";
+	fpd << "Hilda Fonseca Silva" << "\n";
+	fpd << "José Manuel Carvalho" << "\n";
+	fpd << "José Alberto Gomes" << "\n";
+	fpd << "Maria Silvéria Bastos" << "\n";
+	fpd << "Anabela Bastos Torres" << "\n";
+	fpd << "Teodoro Armando Matos" << "\n";
 	fpd.close();
 	//cout << "Inicializado!";
 	}
@@ -219,6 +225,9 @@ bool ExisteNome(string nome)
 		filePointerLetraP.close();
 	return encontrado;
 	}
+
+
+
 //  - - - - - - - - - END FUNÇÕES - - - - - - - - -
 
 
