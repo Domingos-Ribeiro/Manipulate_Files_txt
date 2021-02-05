@@ -20,6 +20,7 @@ void DesenhaMenu();
 void inicializa_ficheiro();
 void inicializa_ficheiro2();
 bool ExisteNome(string nome);
+int ContarNomesRepetidos();
 
 
 
@@ -177,33 +178,27 @@ int main()
 			case 'V': case 'v': // Verifica se há nomes repetidos
 			{
 			inicializa_ficheiro2();
-
 			ifstream fpl("lista.txt");
-
 			while (getline(fpl, nome))
 				{
 				cout << "\n" << nome << "\n";
 				}
-			int contador = 0;
-			string nomeDoFicheiro;
 
-			cout << "\nDigite o nome a procurar \n\n";
-			getline(cin, nome);
+			SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 6);
+			cout << "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\n";
+			SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 7);
 			
-			while (getline(fpl, nomeDoFicheiro)) //Percorre as linhas
-				
-				{ 
-				if (nomeDoFicheiro == nome)
-					{
-					contador++;
-					}
-				
+			if (ContarNomesRepetidos > 0)
+				{
+					cout << "Existem " << ContarNomesRepetidos() << " nomes iguais a esse.\n";
 				}
-			cout << contador << " \n";
-			fpl.close();
-			}
-			break;
+			else
+				{
+				cout << "O nome que digitou não existe na lista";
+				}
 			
+			break;
+			}
 			
 		
 
@@ -311,6 +306,32 @@ bool ExisteNome(string nome)
 		filePointerLetraP.close();
 	return encontrado;
 	}
+
+int ContarNomesRepetidos()
+	{
+	string nomeDigitado;
+	string nomeDoFicheiro;
+
+	int contador = 0;
+
+	cout << "\nDigite o nome a procurar: \n";
+	getline(cin, nomeDigitado);
+	ifstream fpV("lista.txt");
+
+	while (getline(fpV, nomeDoFicheiro)) //Percorre as linhas
+
+		{
+		if (nomeDoFicheiro == nomeDigitado)
+			{
+			contador++;
+			}
+		
+		}
+
+	fpV.close();
+	return contador;
+	}
+
 
 
 
