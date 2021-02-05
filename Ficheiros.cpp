@@ -138,7 +138,7 @@ int main()
 				getline(cin, nome);
 
 				ofstream filePointerC("Lista.txt", ofstream::app);
-				filePointerC << "\n" << nome;
+				filePointerC << nome;
 				filePointerC.close();
 
 				break;
@@ -171,8 +171,8 @@ void DesenhaMenu()
 		cout << "xx                                              xx\n";
 		cout << "xx  - (I)nicializar o ficheiro com 16 nomes.    xx\n";
 		cout << "xx  - (L)istar os nomes da lista.               xx\n";
-		cout << "xx  - (C)olocar mais um nome na lista.          xx\n";
 		cout << "xx  - (E)screver um nome no inicio da lista.    xx\n";
+		cout << "xx  - (C)olocar mais um nome no Fim da lista.   xx\n";
 		cout << "xx  - (D)eletar ou apagar o ficheiro de texto.  xx\n";
 		cout << "xx  - (S)ubstituir um nome na lista.            xx\n";
 		cout << "xx  - (P)rocurar um nome na lista.              xx\n";
