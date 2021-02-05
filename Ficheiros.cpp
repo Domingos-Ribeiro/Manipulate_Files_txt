@@ -18,6 +18,7 @@ char op;
 //  - - - - - - - - - DECLARAÇÃO DAS FUNÇÕES - - - - - - - - -
 void DesenhaMenu();
 void inicializa_ficheiro();
+void inicializa_ficheiro2();
 bool ExisteNome(string nome);
 
 
@@ -82,10 +83,11 @@ int main()
 			case 'I': case 'i': // Inicializa o ficheiro com vários nomes
 			{
 				inicializa_ficheiro();
+			
+				
 			}
-				break;
-
-
+			break;
+		
 
 			case 'D': case 'd':// Apaga o ficheiro
 				
@@ -151,6 +153,8 @@ int main()
 
 				break;
 			}
+
+
 			case 'C': case 'c':
 			{
 
@@ -169,6 +173,39 @@ int main()
 			
 				break;
 
+
+			case 'V': case 'v': // Verifica se há nomes repetidos
+			{
+			inicializa_ficheiro2();
+
+			ifstream fpl("lista.txt");
+
+			while (getline(fpl, nome))
+				{
+				cout << "\n" << nome << "\n";
+				}
+			int contador = 0;
+			string nomeDoFicheiro;
+
+			cout << "\nDigite o nome a procurar \n\n";
+			getline(cin, nome);
+			
+			while (getline(fpl, nomeDoFicheiro)) //Percorre as linhas
+				
+				{ 
+				if (nomeDoFicheiro == nome)
+					{
+					contador++;
+					}
+				
+				}
+			cout << contador << " \n";
+			fpl.close();
+			}
+			break;
+			
+			
+		
 
 			default:
 
@@ -201,6 +238,7 @@ void DesenhaMenu()
 		cout << "xx  - (P)rocurar um nome na lista.              xx\n";
 		cout << "xx  - (A)juda.                                  xx\n";
 		cout << "xx  - (C)ontar nomes.                           xx\n";
+		cout << "xx  - (V)erifica se há nomes repetidos.         xx\n";
 		cout << "xx                                              xx\n";
 		cout << "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\n";
 		SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE),7);
@@ -230,6 +268,31 @@ void inicializa_ficheiro()
 	//cout << "Inicializado!";
 	}
 
+void inicializa_ficheiro2()
+	{
+	ofstream fpd("lista.txt");
+	fpd << "Ana Rita Cunha" << "\n";
+	fpd << "Bela Costa Silva" << "\n";
+	fpd << "Bela Costa Silva" << "\n";
+	fpd << "Carlos Alberto Costa" << "\n";
+	fpd << "Carlos Serafim Ferreira" << "\n";
+	fpd << "Daniel Bastos Gomes" << "\n";
+	fpd << "Diogo Silva Ferraz" << "\n";
+	fpd << "Elvira Gomes Pendes" << "\n";
+	fpd << "Fernanda Maria Silva" << "\n";
+	fpd << "Fernando Gomes Barros" << "\n";
+	fpd << "Gilherme Alexandre Barros" << "\n";
+	fpd << "Hilda Fonseca Silva" << "\n";
+	fpd << "José Manuel Carvalho" << "\n";
+	fpd << "José Alberto Gomes" << "\n";
+	fpd << "Maria Silvéria Bastos" << "\n";
+	fpd << "Anabela Bastos Torres" << "\n";
+	fpd << "Teodoro Armando Matos" << "\n";
+	fpd << "Teodoro Armando Matos" << "\n";
+	fpd << "Teodoro Armando Matos" << "\n";
+	fpd.close();
+	//cout << "Inicializado!";
+	}
 
 bool ExisteNome(string nome)
 	{
