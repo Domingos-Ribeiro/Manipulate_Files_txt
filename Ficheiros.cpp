@@ -226,7 +226,7 @@ void DesenhaMenu()
 		cout << "xx  - (P)rocurar um nome na lista.              xx\n";
 		cout << "xx  - (A)juda.                                  xx\n";
 		cout << "xx  - (C)ontar nomes.                           xx\n";
-		cout << "xx  - (V)erifica se há nomes repetidos.         xx\n";
+		cout << "xx  - (V)erifica se existem nomes repetidos.    xx\n";
 		cout << "xx                                              xx\n";
 		cout << "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\n";
 		SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE),7);
