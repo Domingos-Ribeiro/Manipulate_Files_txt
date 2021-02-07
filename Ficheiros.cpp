@@ -5,6 +5,7 @@
 #include <string>
 #include <locale>
 #include <Windows.h>
+#include <fstream>
 
 
 using namespace std;
@@ -31,7 +32,7 @@ int main()
 	SetConsoleOutputCP(1252);
 	SetConsoleCP(1252);
 	locale::global(locale(""));
-	SetConsoleTitle(TEXT("  Text file aplications")); // Titulo da Aplicação
+	//SetConsoleTitle(TEXT("  Text file aplications")); // Titulo da Aplicação
 	setlocale(LC_ALL, "Portuguese");//habilita a acentuação para o português
 	string nome;
 	
@@ -107,10 +108,33 @@ int main()
 			// S //
 			case 'S': case 's': // Substituir um nome na lista
 			{
+			string nomeCompleto; // Variável que vai receber o conjunto das strings do nome
+			string *apontadorNome; // Endereço da memória
+			string nomeTrocado;
 
-			bool SubstituirNome(int removido, int renomear);
+			cout << "Qual o nome que deseja Substituir?\n";
+			getline(cin, nomeCompleto);
+			
+			// Verificação se o endereço é atribuido
+			// O i comercial (&) relaciona e indica qual é o endereço da variável nomeCompleto
 
+			apontadorNome = &nomeCompleto; // O apontadorNome recebe o endereço da Varável nomeCompleto
+			cout << "Endereço atribuido inicialmente: " << apontadorNome << "\n"; // Indica ou mostra o endereço atual da memória da variável nomeCompleto
+			cout << "String que estava na Variável: " << *apontadorNome << "\n"; // Indica ou mostra o "valor" da variável nomeCompleto
 
+			// Através do endereço efetua-se a troca do valor da variável
+			cout << "\n\nQual o nome que deseja trocar= \n";
+			getline(cin, nomeTrocado);
+
+			// Verificação se foi alterado o "valor" da Variável
+				nomeCompleto = nomeTrocado;
+				cout << "Endereço Atual: \n" << apontadorNome;
+				cout << "String que ficou na Variável: \n" << *apontadorNome << "\n\n";
+
+			if (nomeCompleto == nomeCompleto)
+				{
+					cout << "\nTroca efectuada com Sucesso!\n";
+				}
 			break;
 			}
 
