@@ -47,7 +47,8 @@ int main()
 		switch (op)
 			{
 
-			case 'L': case 'l':
+			// L //
+			case 'L': case 'l': // Apresenta o que está no ficheiro de texto
 			{
 				ifstream fpl("lista.txt");
 
@@ -56,40 +57,43 @@ int main()
 					cout << "\n" << nome << "\n";
 					}
 
-				//cout << nome << "\n";
 				fpl.close();
 
 				break;
 			}
 
+
+
+
+			// E //
 			case 'E': case 'e':
 			{
-
-	
-			//Cria um ficheiro e escreve uma linha (Apaga sempre a primeira linha)
-			ofstream fpd("lista.txt", ofstream::out);
-
 			//Cria um ficheiro e escreve sempre uma nova linha (Não apaga o que foi colocado antes)
-			//ofstream fpd("lista.txt", ios::app);
+			ofstream fpd("lista.txt", ios::app);
 
 			cout << "Por favor introduza um nome\n";
 			getline(cin, nome);
 			
-			fpd << nome << "\n";
+			fpd << nome <<"\n";
+			
 			fpd.close();
 
 			break;
 			}
 
+
+
+			// i //
 			case 'I': case 'i': // Inicializa o ficheiro com vários nomes
 			{
 				inicializa_ficheiro();
-			
+				cout << "\nFoi criada uma lista com 16 nomes.\n\n";
 				
 			}
 			break;
 		
 
+			// D //
 			case 'D': case 'd':// Apaga o ficheiro
 				
 				if (remove("lista.txt") != 0)
@@ -100,34 +104,21 @@ int main()
 				break;
 
 
+			// S //
+			case 'S': case 's': // Substituir um nome na lista
+			{
 
-			case 'S': case 's':
-				cout << "Qual o nome que deseja Substituir? ";
-				getline(cin, nome);
-
-				if (ExisteNome(nome) == true)
-					{
-					cout << "Nome a colocar na lista? \n";
-					getline(cin, nome);
-					system("clear || cls");
-					ofstream fps("lista.txt", ios::app);
-					fps << nome << "\n";
-					fps.close();
-					}
-				else
-					{
-					cout << "O nome Não existe!\n";
-					}
-
-				break;
+			bool SubstituirNome(int removido, int renomear);
 
 
+			break;
+			}
 
+			// P //
 			case 'P': case 'p': // Procura um nome "Completo" na lista
 				
-				cout << "Qual o nome que deseja procurar? ";
-				cin.ignore();
-				getline(cin.ignore(), nome);
+				cout << "Qual o nome que deseja procurar?\n";
+				getline(cin, nome);
 
 				if (ExisteNome(nome) == true)
 					{
@@ -142,21 +133,21 @@ int main()
 				break;
 
 
-
-			case 'M': case 'm': // Coloca mais um nome na lista
+			// M //
+			case 'M': case 'm': // Coloca mais um nome no fim da lista
 			{
-				cout << "Introduza o nome que deseja acrescentar na lista: ";
+				cout << "Introduza o nome que deseja acrescentar na lista: \n";
 				getline(cin, nome);
 
 				ofstream filePointerC("Lista.txt", ofstream::app);
 				filePointerC << nome;
 				filePointerC.close();
-
+				cout << "Nome introduzido com sucesso!\n";
 				break;
 			}
 
-
-			case 'C': case 'c':
+			// C //
+			case 'C': case 'c': // Conta os nomes da lista
 			{
 
 			int contador = 0;
@@ -174,7 +165,7 @@ int main()
 			
 				break;
 
-
+			// V //
 			case 'V': case 'v': // Verifica se há nomes repetidos
 			{
 			inicializa_ficheiro2();
@@ -232,7 +223,7 @@ void DesenhaMenu()
 		SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE),7);
 	}
 
-
+//----------------------------------------------------------------------------
 void inicializa_ficheiro()
 	{
 	ofstream fpd("lista.txt");
@@ -253,9 +244,10 @@ void inicializa_ficheiro()
 	fpd << "Anabela Bastos Torres" << "\n";
 	fpd << "Teodoro Armando Matos" << "\n";
 	fpd.close();
-	//cout << "Inicializado!";
+	
 	}
 
+//------------------------------------------------------------------------------
 void inicializa_ficheiro2()
 	{
 	ofstream fpd("lista.txt");
@@ -278,9 +270,12 @@ void inicializa_ficheiro2()
 	fpd << "Teodoro Armando Matos" << "\n";
 	fpd << "Teodoro Armando Matos" << "\n";
 	fpd << "Teodoro Armando Matos" << "\n";
+	
+	cout << "Foi criada uma lista com nomes repetidos.";
 	fpd.close();
-	//cout << "Inicializado!";
 	}
+
+//---------------------------------------------------------------------------
 
 bool ExisteNome(string nome)
 	{
@@ -299,6 +294,8 @@ bool ExisteNome(string nome)
 		filePointerLetraP.close();
 	return encontrado;
 	}
+
+//----------------------------------------------------------------------------------
 
 int ContarNomesRepetidos()
 	{
@@ -324,6 +321,45 @@ int ContarNomesRepetidos()
 	fpV.close();
 	return contador;
 	}
+
+//------------------------------------------------------------------------------
+
+void SubstituiNome()
+	{
+	string nomeSubstituido;
+	string nomeAtual;
+	bool encontraNome = false;
+	ifstream filePointer("lista.txt");
+	ofstream filePoiterTemporario("lista2.txt");
+
+	cout << "Qual é o nome que deseja substituir?\n";
+	getline(cin, nomeSubstituido);
+
+	cout << "Qual o nome que quer introduzir na lista?\n";
+	getline(cin, nomeAtual);
+
+	// Caso o nome digitado exista, subtitui o nome atual
+	while (getline(filePointer, nomeAtual))
+		{
+		if (nomeAtual == nomeSubstituido && encontraNome == false)
+			{
+			nomeAtual = nomeSubstituido;
+			encontraNome = true;
+			}
+
+		nomeAtual += "\n";
+		filePoiterTemporario << nomeAtual;
+		}
+
+	filePointer.close();
+	filePoiterTemporario.close();
+
+	int rem = remove("lista.txt");
+	cout << rem;
+	int ren = rename("lista2.txt", "lista.txt");
+	cout << ren;
+	}
+	
 
 
 
