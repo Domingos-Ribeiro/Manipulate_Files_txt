@@ -120,16 +120,16 @@ int main()
 
 			apontadorNome = &nomeCompleto; // O apontadorNome recebe o endereço da Varável nomeCompleto
 			cout << "Endereço atribuido inicialmente: " << apontadorNome << "\n"; // Indica ou mostra o endereço atual da memória da variável nomeCompleto
-			cout << "String que estava na Variável: " << *apontadorNome << "\n"; // Indica ou mostra o "valor" da variável nomeCompleto
+			cout << "String que estava na Variavel: " << *apontadorNome << "\n"; // Indica ou mostra o "valor" da variável nomeCompleto
 
 			// Através do endereço efetua-se a troca do valor da variável
-			cout << "\n\nQual o nome que deseja trocar= \n";
+			cout << "\n\nQual o nome que deseja trocar: ";
 			getline(cin, nomeTrocado);
 
 			// Verificação se foi alterado o "valor" da Variável
 				nomeCompleto = nomeTrocado;
-				cout << "Endereço Atual: \n" << apontadorNome;
-				cout << "String que ficou na Variável: \n" << *apontadorNome << "\n\n";
+				cout << "Endereço da memoria Atual: " << apontadorNome << "\n";
+				cout << "String que ficou na Variavel: " << *apontadorNome << "\n\n";
 
 			if (nomeCompleto == nomeCompleto)
 				{
