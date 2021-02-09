@@ -131,6 +131,7 @@ int main()
 				cout << "Endereço da memoria Atual: " << apontadorNome << "\n";
 				cout << "String que ficou na Variavel: " << *apontadorNome << "\n\n";
 
+			// Esta verificação apenas informa o valor da variável na memória RAM
 			if (nomeCompleto == nomeCompleto)
 				{
 					cout << "\nTroca efectuada com Sucesso!\n";
