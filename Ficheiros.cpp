@@ -207,15 +207,66 @@ int main()
 				cout << "Existem " << ContarNomesRepetidos() << " nomes iguais a esse.\n";
 
 			break;
+
 			}
 			
-		
+			// 6 //
+
+			case '6': // Produção do dia 09-02-2021
+			{
+			bool ExisteSubstring(string s, string subs);
+			int existe = 0;
+			string subString;
+			string subNome;
+
+			fstream filePointer6("lista.txt");
+
+			cout << "Qual a substring que deseja procurar? \n";
+			getline(cin, subString);
+
+			while (getline(filePointer6, subNome))
+				{
+				if (ExisteSubstring(subNome, subString))
+					{
+					existe++;
+					}
+				}
+
+			filePointer6.close();
+
+			if (existe != 0)
+				{
+				cout << "A subtring que procura existe na lista " << existe << " vezes";
+				}
+			else
+				{
+				cout << "A substring que procura não existe.\n";
+				}
+
+			}
+			// Final da Produção
+				/*int contador = 0;
+				ifstream filePointer("lista.txt");
+
+				while (filePointer, existe)
+					{
+					contador++;
+					}
+
+				cout << "\nA lista contem: " << contador << " nomes \n\n";
+				filePointer.close();
+
+				}*/
+
 
 			default:
 
 				cout << "\nA letra introduzida não faz parte do menu\n\n";
 				break;
 			}
+
+
+			
 
 		} while (op != 27); //O número 27 corresponde ao ESC em ASCI, ou seja, fecha o programa
 }
@@ -243,6 +294,7 @@ void DesenhaMenu()
 		cout << "xx  - (A)juda.                                  xx\n";
 		cout << "xx  - (C)ontar nomes.                           xx\n";
 		cout << "xx  - (V)erifica se existem nomes repetidos.    xx\n";
+		cout << "xx  - (6) Produção para Avaliação               xx\n";
 		cout << "xx                                              xx\n";
 		cout << "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\n";
 		SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE),7);
@@ -384,10 +436,23 @@ void SubstituiNome()
 	int ren = rename("lista2.txt", "lista.txt");
 	cout << ren;
 	}
+
+//------------------------------------------------------------------------------
+
+bool ExisteSubstring(string s, string subs)
+	{
+	//retorna true se a substring existir; 
+	//falso, no caso oposto 
+	if (s.find(subs) < 1000)
+		{
+		return true;
+		}
+	else
+		{
+		return false;
+		}
+	}
 	
-
-
-
 
 //  - - - - - - - - - END FUNÇÕES - - - - - - - - -
 
