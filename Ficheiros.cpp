@@ -274,7 +274,7 @@ int main()
 
 
 
-//  - - - - - - - - - FUNÇÕES - - - - - - - - -
+//  - - - - - - - - - FUNÇÕES - - - - - - - - - -
 void DesenhaMenu()
 	{
 		SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 6);
